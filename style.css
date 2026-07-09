@@ -298,10 +298,12 @@ body.detalle-ampliado .col-right {
   .col-left {
     transform: none !important;
     opacity: 1 !important;
+    z-index: 1 !important;
   }
 
   .col-center {
     transform: translateY(100%) !important;
+    z-index: 2 !important;
   }
 
   body.mostrar-lista .col-center {
@@ -310,6 +312,7 @@ body.detalle-ampliado .col-right {
 
   .col-right {
     transform: translateY(100%) !important;
+    z-index: 3 !important;
   }
 
   body.mostrar-detalle .col-right {
