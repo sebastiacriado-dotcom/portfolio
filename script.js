@@ -286,16 +286,6 @@ function mostrarProyecto(id) {
   body.classList.add('mostrar-detalle');
 }
 
-  detalleProyecto.innerHTML = html;
-
-  // Marca el proyecto activo en la lista
-  Array.from(listaProyectos.children).forEach(function (li) {
-    li.classList.toggle('activo', li.dataset.id === id);
-  });
-
-  body.classList.add('mostrar-detalle');
-
-
 // --- Cerrar columna 2 (lista de proyectos) ---
 // Al cerrarla, se cierra también la columna 3, ya que depende de un proyecto elegido en la lista.
 cerrarLista.addEventListener('click', function () {
