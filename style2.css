@@ -1,0 +1,354 @@
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: arial, sans-serif;
+  color: #111;
+  background-image: url('torre.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment:fixed;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: #fff12e;
+  color: #0033ff;
+  text-shadow: 1px 1px 1px #00ffdd;
+}
+
+::-moz-selection {
+  background: #fff12e;
+  color: #0033ff;
+  text-shadow: 1px 1px 1px #00ffdd;
+}
+
+p{
+  text-wrap: pretty;
+}
+
+a, button{
+  color: #e3ff0e;
+  cursor: pointer;
+}
+
+.footer button{
+  font-family: arial, sans-serif;
+  color: #ffffff;
+  background-image: url('torre.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment:fixed;
+  margin: 0 auto;
+  padding: 45px 30px;
+  border-radius: 100px;
+  border: none;
+}
+
+.footer{
+  width: 100%;
+  display: flex;
+  flex-direction: inline;
+  align-items: left;
+  gap: 8px;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   LAYOUT DE TRES COLUMNAS
+   Márgenes pequeños (10px) alrededor de todo.
+   Cada columna es un bloque fijo posicionado; la 2 y la 3
+   están ocultas por defecto y se muestran añadiendo clases
+   al <body> desde script.js.
+   ========================================================= */
+
+.layout {
+  position: relative;
+}
+
+/* Ancho de cada columna: tres columnas iguales ocupando toda la pantalla,
+   con márgenes de 10px fuera y entre columnas (4 huecos de 10px en total). */
+:root {
+  --col-width: calc((100vw - 40px) / 3);
+}
+
+.col {
+  position: fixed;
+  top: 10px;
+  bottom: 10px;
+  width: var(--col-width);
+  overflow-y: auto;
+  font-size: 18px;
+  color: #ffffff;
+/*  color: #ff00f7;
+  background: #d4ff8f; */
+/*  color: #177126;
+  background: #dfc4ff; */
+  padding: 5px;
+  transition: ease;
+  transition-duration: 1s;
+  box-shadow: 3px 2px 7px rgba(0, 0, 0, 0.60);
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* Internet Explorer / Edge legacy */
+}
+
+.col::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Edge (Chromium) */
+}
+
+/* Columna 1: presentación + contacto. Siempre visible y fija. */
+.col-left {
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  background-color: #d750e6;
+}
+
+/* Columna 2: lista de proyectos. Oculta hasta hacer click en "proyectos". */
+.col-center {
+  left: calc(10px + var(--col-width) + 10px);
+  transform: translateX(calc(-1 * (var(--col-width) + 10px)));
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: transform .8s ease, opacity 0.3s ease 0.7s, width 1s ease, left 1s ease, z-index 0s ease 1s;
+  background-color: #4861e0;
+}
+
+/* Columna 3: detalle del proyecto (texto + imágenes). Oculta hasta elegir proyecto. */
+.col-right {
+  left: calc(10px + (var(--col-width) * 2) + 20px);
+  transform: translateX(calc(-1 * ((var(--col-width) * 2) + 20px)));
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform .8s ease, opacity 0.3s ease 0.7s, width 1s ease, left 1s ease;
+  background-color: #1d9f6b;
+}
+
+body.mostrar-lista .col-center {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform .5s ease, opacity 0.3s ease 0s, width 1s ease, left 1s ease, z-index 0s ease 1s;
+}
+
+body.mostrar-detalle .col-right {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform .7s ease, opacity 0.3s ease 0s, width 1s ease, left 1s ease;
+}
+
+/* =========================================================
+   COLUMNA 1: PRESENTACIÓN Y CONTACTO
+   ========================================================= */
+
+.col-left h1 {
+  font-size: 25px;
+  margin: 0 0 16px;
+}
+
+.col-left p {
+  margin: 0 0 24px;
+}
+
+.link-proyectos {
+  color: #e3ff0e;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.contacto h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.contacto p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   COLUMNA 2: LISTA DE PROYECTOS
+   ========================================================= */
+
+.col-header {
+  position: sticky;
+  top: -5px;
+  margin: -5px -5px 16px -5px;
+  padding: 5px;
+  background: inherit;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.col-header h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.cerrar {
+  font-family: arial, sans-serif;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0;
+}
+
+.lista-proyectos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lista-proyectos li {
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.lista-proyectos li.activo {
+  font-weight: bold;
+}
+
+/* =========================================================
+   COLUMNA 3: DETALLE DEL PROYECTO
+   ========================================================= */
+
+#detalle-proyecto h2 {
+  font-size: 23px;
+  margin: 0 0 16px;
+}
+
+#detalle-proyecto p {
+  margin: 0 0 24px;
+}
+
+#detalle-proyecto img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 0 16px;
+}
+
+#detalle-proyecto video {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 0 16px;
+}
+
+.acciones-detalle {
+  display: flex;
+  gap: 8px;
+}
+
+body.detalle-ampliado .col-center {
+  left: 10px;
+  z-index: 10;
+  transition: transform 1s ease, opacity 0.3s ease 0s, width 1s ease, left 1s ease, z-index 0s ease 0s;
+}
+
+body.detalle-ampliado .col-right {
+  left: calc(10px + var(--col-width) + 10px);
+  width: calc((var(--col-width) * 2) + 10px);
+}
+
+#ampliar-detalle img {
+  display: block;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin: 0 0 16px;
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================================
+   VERSIÓN MÓVIL
+   ========================================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --col-width: 100vw;
+  }
+
+  .col {
+    left: 0 !important;
+    width: 100vw !important;
+    top: 0;
+    bottom: 0;
+    padding: 15px;
+  }
+
+  .col-left {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .col-center {
+    transform: translateY(100%) !important;
+  }
+
+  body.mostrar-lista .col-center {
+    transform: translateY(0) !important;
+  }
+
+  .col-right {
+    transform: translateY(100%) !important;
+  }
+
+  body.mostrar-detalle .col-right {
+    transform: translateY(0) !important;
+  }
+
+  body.detalle-ampliado .col-center,
+  body.detalle-ampliado .col-right {
+    width: 100vw !important;
+    left: 0 !important;
+  }
+
+  #ampliar-detalle {
+    display: none;
+  }
+
+  .cerrar .texto-cerrar {
+    display: none;
+  }
+
+  .cerrar::after {
+    content: attr(data-mobile);
+  }
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+
+  #cursor-custom {
+    display: none;
+  }
+}

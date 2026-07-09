@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastià Criado — Portfolio</title>
+<link id="estilo" rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- ===================== COLUMNA 1: PRESENTACIÓN ===================== -->
+    <section class="col col-left">
+      <h1>Sebastià Criado</h1>
+      <p>
+        Holaa! Soy Sebastià Criado, diseñador gráfico valenciano graduado en la EASD València.
+        Me interesa el diseño desde una perspectiva experimental y conceptual, siempre más
+        allá de la estética: busco lenguajes originales e inesperados, diseñar en diagonal. Más
+        que especializarme en un área concreta del diseño gráfico, me interesa especializarme en
+        una forma de diseñar, basándome en la investigación, la experimentación, la novedad y con
+        rigor técnico y conceptual. Fuera del diseño, me muevo entre la literatura barroca
+        española, el cine de Almodóvar, las obras de Mahler y un buen aperitivo en cualquier bar;
+        cosas que, de un manera u otra, siempre acaban colándose en cómo pienso el diseño. 
+        Aquí puedes ver mis <span id="link-proyectos" class="link-proyectos">proyectos</span>. 
+      </p>
+
+      <div class="contacto">
+        <h2>Contacto</h2>
+        <p>
+          Email: <a href="mailto:sebastiacriado@gmail.com">sebastiacriado@gmail.com</a><br>
+          Instagram: <a href="https://instagram.com/de_criado" target="_blank" rel="noopener">@de_criado</a><br>
+          Teléfono: <a href="tel:+34633824360">+34 633 82 43 60</a><br>
+        </p>
+      </div>
+      <div class="footer">
+       <button onclick="cambiarEstilo('style.css')" id="boton-estilo1" class="activo">Estilo 1</button>
+       <button onclick="cambiarEstilo('style2.css')" id="boton-estilo2">Estilo 2</button>
+      </div>
+    </section>
+
+    <!-- ===================== COLUMNA 2: LISTA DE PROYECTOS ===================== -->
+    <section class="col col-center" id="col-center">
+      <div class="col-header">
+        <h2>Proyectos</h2>
+        <button id="cerrar-lista" class="cerrar" aria-label="Cerrar lista de proyectos" data-mobile="(about)">
+  <span class="texto-cerrar">(x)</span>
+</button>
+      </div>
+      <ul id="lista-proyectos" class="lista-proyectos">
+        <!-- Generado por script.js a partir de PROYECTOS -->
+      </ul>
+    </section>
+
+    <!-- ===================== COLUMNA 3: DETALLE DEL PROYECTO ===================== -->
+    <section class="col col-right" id="col-right">
+      <div class="col-header">
+  <h2 id="titulo-detalle">Proyecto</h2>
+  <div class="acciones-detalle">
+    <button id="ampliar-detalle" class="cerrar" aria-label="Ampliar columna de proyecto">
+      <img id="icono-ampliar" src="flechas-expandir.svg" alt="" width="11" height="11">
+    </button>
+    <button id="cerrar-detalle" class="cerrar" aria-label="Cerrar detalle del proyecto" data-mobile="(lista)">
+  <span class="texto-cerrar">(x)</span>
+</button>
+  </div>
+</div>
+      <div id="detalle-proyecto">
+        <!-- Generado por script.js al hacer click en un proyecto -->
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
