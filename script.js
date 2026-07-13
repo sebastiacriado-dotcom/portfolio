@@ -23,6 +23,7 @@ const PROYECTOS = [
       'images/chaowifi/1.webp',
       'images/chaowifi/2.webp',
       'images/chaowifi/3.webp',
+      'images/chaowifi/4.gif',
       'images/chaowifi/4.webp',
       'images/chaowifi/5.webp'
     ]
