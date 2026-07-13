@@ -269,7 +269,7 @@ function mostrarProyecto(id) {
 
     if (esYoutube) {
       const idYoutube = src.replace('youtube:', '');
-      html += '<div class="video-embed"><iframe src="https://www.youtube.com/embed/' + idYoutube + '?autoplay=1&mute=1&loop=1&playlist=' + idYoutube + '&controls=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>';
+      html += '<div class="video-embed"><iframe src="https://www.youtube.com/embed/' + idYoutube + '?autoplay=1&mute=1&loop=1&playlist=' + idYoutube + '" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>';
     } else if (esVideo) {
       html += '<video src="' + src + '" controls muted playsinline></video>';
     } else {
