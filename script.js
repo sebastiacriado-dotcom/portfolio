@@ -273,7 +273,7 @@ function mostrarProyecto(id) {
     } else if (esVideo) {
       html += '<video src="' + src + '" controls muted playsinline></video>';
     } else {
-      html += '<img src="' + src + '" alt="' + proyecto.titulo + '">';
+      html += '<img src="' + src + '" alt="' + proyecto.titulo + '"loading="lazy">';
     }
   });
 
@@ -349,35 +349,3 @@ window.addEventListener("DOMContentLoaded", () => {
   if (btn2) btn2.addEventListener("click", () => cambiarEstilo("style2.css"));
 });
 
-// =========================================================
-// SWIPE PARA CERRAR COLUMNAS EN MÓVIL
-// Deslizar hacia abajo sobre la columna 2 o 3 la cierra,
-// igual que si pulsaras el botón (x).
-// =========================================================
-
-function activarSwipeParaCerrar(elemento, funcionCerrar) {
-  let yInicial = null;
-
-  elemento.addEventListener('touchstart', function (e) {
-    yInicial = e.touches[0].clientY;
-  });
-
-  elemento.addEventListener('touchend', function (e) {
-    if (yInicial === null) return;
-    const yFinal = e.changedTouches[0].clientY;
-    const distancia = yFinal - yInicial;
-
-    if (distancia > 80) {
-      funcionCerrar();
-    }
-    yInicial = null;
-  });
-}
-
-activarSwipeParaCerrar(document.getElementById('col-center'), function () {
-  cerrarLista.click();
-});
-
-activarSwipeParaCerrar(document.getElementById('col-right'), function () {
-  cerrarDetalle.click();
-});
